@@ -1,0 +1,37 @@
+.gallery {
+  --indent: 24px;
+  --items: 4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent);
+
+  max-width: 1158px;
+  padding: 0 15px;
+  margin: 48px auto;
+}
+
+.gallery .photo-card {
+  flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.photo-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.photo-card .info {
+  display: flex;
+  gap: 4px;
+  padding: 12px;
+  justify-content: space-between;
+}
+
+.photo-card .info-item {
+  text-align: center;
+  font-size: 12px;
+}

@@ -1,5 +1,12 @@
 .header {
-  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px;
+}
+
+.nav {
+  flex: 0 0 auto; /* Залишити розмір навігації */
 }
 
 .nav-list {
@@ -18,4 +25,7 @@
 .nav-link:hover,
 .nav-link:focus {
   color: #747bff;
+}
+.nav-link.active {
+  color: #0915ee;
 }
