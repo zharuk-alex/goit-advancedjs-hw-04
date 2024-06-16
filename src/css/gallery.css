@@ -3,6 +3,7 @@
   --items: 4;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--indent);
 
   max-width: 1158px;
@@ -14,9 +15,16 @@
   flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
   display: flex;
   flex-direction: column;
-  outline: 1px solid;
+  outline: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   box-sizing: border-box;
+  box-shadow: none;
+  transition: box-shadow var(--transition-base);
+  overflow: hidden;
+}
+
+.gallery .photo-card:hover {
+  box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
 }
 
 .photo-card img {

@@ -195,19 +195,21 @@ refs.searchInput.addEventListener('input', function () {
 
 refs.form.addEventListener('submit', evt => {
   evt.preventDefault();
-  store.page = 0;
   refs.gallery.innerHTML = '';
   enableBtnLoading(refs.btnSearch);
   refs.btnLoadMore.classList.add('hidden');
+
+  store.page = 0;
   store.query = refs.searchInput.value;
+  store.is_loadable = false;
+
   loadData();
 });
 
-refs.btnLoadMore.addEventListener('click', () => {
+refs.btnLoadMore.addEventListener('click', async () => {
   enableBtnLoading(refs.btnLoadMore);
-  loadData().then(data => {
-    scrollToElementWithOffset(data.hits[0]?.id);
-  });
+  const result = await loadData();
+  scrollToElementWithOffset(result.hits[0]?.id);
 });
 
 refs.nav.addEventListener('click', evt => {
