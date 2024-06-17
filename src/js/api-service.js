@@ -2,28 +2,24 @@ import axios from 'axios';
 
 const API_KEY = '5416463-3b798b4f634faaf9188b7760a';
 
-const searchImages = ({ query, page, per_page = 40 }) => {
-  const params = new URLSearchParams({
-    key: API_KEY,
-    q: query,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-    per_page,
-    page,
+const searchImages = async ({ query, page, per_page = 40 }) => {
+  const response = await axios.get('https://pixabay.com/api/', {
+    params: {
+      key: API_KEY,
+      q: query,
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
+      per_page,
+      page,
+    },
   });
 
-  return axios
-    .get('https://pixabay.com/api/', {
-      params,
-    })
-    .then(resp => {
-      if (resp.status !== 200) {
-        throw new Error(resp.statusText);
-      }
+  if (response.status !== 200) {
+    throw new Error(response.statusText);
+  }
 
-      return resp.data;
-    });
+  return response.data;
 };
 
 export { searchImages };
